@@ -5,14 +5,20 @@ import { ShareIcon } from "./components/ui/Icons/ShareIcon"
 import { NavBar } from "./components/ui/NavBar"
 import { SideBar } from "./components/ui/SideBar"
 import { useNavigate } from "react-router-dom"
+import { InputPostBox } from "./components/ui/InputPostBox"
+import { useRecoilValue } from "recoil"
+import { viewInputBox } from "./components/ui/States/RecoilAtoms"
+import { useSetRecoilState } from "recoil"
 
 export const ContentPage = ()=>{
+    const viewInputBoxVal = useRecoilValue(viewInputBox);
+    const setViewInputBoxVal = useSetRecoilState(viewInputBox);
     const navigate = useNavigate();
     useEffect(()=>{
         document.title = "Dashboard"
     },[])
     return <>
-        <div className='bg-[#F9FBFC] flex-wrap relative'>
+        <div className='bg-[#F9FBFC]'>
         
         <div className='absolute flex'>
           <div className='w-[150px]'>
@@ -24,15 +30,16 @@ export const ContentPage = ()=>{
                 textButton2="Share" 
                 startIcon1={<AddIcon/>} 
                 startIcon2={<ShareIcon/>}
-                onClickButton1={()=>{}}
+                onClickButton1={()=>{setViewInputBoxVal(c=>!c)}}
                 onClickButton2={()=>{}}
                 />
           </div>
           
-          <div className='flex-wrap mt-[70px] m-9'>
+          <div className='mt-[70px] m-9'>
             <ContentViewer/>
           </div>
         </div>
+        {viewInputBoxVal && <InputPostBox/>}
         
       </div>
     </>

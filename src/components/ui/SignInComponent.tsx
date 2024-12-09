@@ -5,6 +5,7 @@ import { useRecoilState, useRecoilStateLoadable, useRecoilValueLoadable, useSetR
 import { isCorrect, isLoggedIn } from "./States/RecoilAtoms";
 import { useEffect } from "react";
 import { Loader } from "./Loader";
+import { useNavigate } from "react-router-dom";
 
 interface SignInType{
     username:string;
@@ -15,6 +16,7 @@ interface SignInType{
 
 export const SignInComponent = ()=>{
     const setIsCorrect = useSetRecoilState(isCorrect);
+    const navigate = useNavigate();
     
     const {
         register,
@@ -39,6 +41,8 @@ export const SignInComponent = ()=>{
         if(data.value){
             console.log("verified")
             setIsCorrect(true);
+            navigate("/dashboard")
+
         }
         else{
             setIsCorrect(false);

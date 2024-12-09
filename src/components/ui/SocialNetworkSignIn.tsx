@@ -2,15 +2,17 @@ import { CredentialResponse, GoogleLogin,useGoogleOneTapLogin } from '@react-oau
 import Button from './Button';
 import { application } from 'express';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 
 export const SocialNetworkSignIn = ()=>{
+    const navigate = useNavigate();
     
     useGoogleOneTapLogin({
             onSuccess:async credentialResponse => {
                 console.log(credentialResponse.credential);
-                await fetch("http://localhost:3000/api/v1/decodeJwt",{
+                const data = await fetch("http://localhost:3000/api/v1/decodeJwt",{
                     method:"GET",
                     headers:{
                         'Accept': 'application/json',
@@ -22,7 +24,26 @@ export const SocialNetworkSignIn = ()=>{
                     return res.json()
                 }).then((res)=>{
                     console.log(res);
+                    return res;
                 })
+                
+                const trySignIn = await fetch("http://localhost:3000/api/v1/googleAuth",{
+                    method:"POST",
+                    headers:{
+                        'Accept': 'application/json',
+                        "Content-Type":"application/json"
+                    },
+                    credentials:"include",
+                    body:JSON.stringify({
+                        email:data.decoded.email,
+                        name:data.decoded.name,
+                        username:data.decoded.name
+                    })
+                }).then(res=>res.json()).then(res=>res).catch(err=>console.log(err));
+                console.log(trySignIn);
+                if(trySignIn?.value===true){
+                    navigate("/dashboard")
+                }
             },
             onError: () => {
                 console.log('Login Failed');
@@ -42,9 +63,11 @@ export const SocialNetworkSignIn = ()=>{
             </div>
             <div className='flex justify-center items-center'>
                 <GoogleLogin
-                onSuccess={async (credentialResponse:CredentialResponse)=>{
+                onSuccess={
+                    async (credentialResponse:CredentialResponse)=>{
                     console.log(credentialResponse.credential);
-                await fetch("http://localhost:3000/api/v1/decodeJwt",{
+
+                    const data = await fetch("http://localhost:3000/api/v1/decodeJwt",{
                     method:"GET",
                     headers:{
                         'Accept': 'application/json',
@@ -52,12 +75,32 @@ export const SocialNetworkSignIn = ()=>{
                         "credentials":"include",
                         "token":`${credentialResponse.credential}`
                     }
-                }).then((res)=>{
-                    return res.json()
-                }).then((res)=>{
-                    console.log(res);
-                })
-                }}
+                    }).then((res)=>{
+                        return res.json()
+                    }).then((res)=>{
+                        return res;
+                    })
+            
+                    const trySignIn = await fetch("http://localhost:3000/api/v1/googleAuth",{
+                    method:"POST",
+                    headers:{
+                        'Accept': 'application/json',
+                        "Content-Type":"application/json"
+                    },
+                    credentials:"include",
+                    body:JSON.stringify({
+                        //@ts-ignore
+                        email:data.decoded.email,
+                        name:data.decoded.name,
+                        username:data.decoded.name,
+                    })
+                }).then(res=>res.json()).then(res=>res).catch(err=>console.log(err));
+                console.log(trySignIn);
+                if(trySignIn?.value===true){
+                    navigate("/dashboard")
+                }
+            
+        }}
                 onError={()=>{
                     console.log("error")
                 }}

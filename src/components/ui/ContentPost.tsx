@@ -1,31 +1,15 @@
 import { DeleteIcon } from "./Icons/DeleteIcon";
 import { ListIcon } from "./Icons/ListIcon";
 import { ShareIconGrey } from "./Icons/ShareIcon";
+import { ContentPostType, ContentPostVarient, ContentPostVarientUse } from "./States/utils";
 import { Tags } from "./Tags";
 
 
-type ContentPostVarient = "normal"|"important";
 
-
-interface ContentPostInterface{
-    text?:string;
-    link?:string;
-    title?:string;
-    tags?:Array<String>;
-    varient?:ContentPostVarient;
-}
-
-type ContentPostVarientType = Record<ContentPostVarient,string>;
-
-
-const ContentPostVarientUse:ContentPostVarientType = {
-    "normal":"",
-    "important":"bg-[#ecf3fc9a]"
-} 
 
 const DefaultStyles:String = " flex-wrap rounded-md border-solid border my-4 mx-[30px] px-[15px] py-[15px] h-[420px]  w-[400px] justify-center item-center shadow-md";
 
-export const ContentPost = (props:ContentPostInterface)=>{
+export const ContentPost = (props:ContentPostType)=>{
     return (
         <div className={`${DefaultStyles} ${ContentPostVarientUse[props.varient?props.varient:"normal"]}`}>
             <div className="pb-3">

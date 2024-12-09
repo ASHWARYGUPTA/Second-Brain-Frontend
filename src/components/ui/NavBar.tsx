@@ -24,7 +24,7 @@ interface NavBarType{
 
 }
 export const NavBar = (props:NavBarType)=>{
-    return <div className="z-50 opacity-100 bg-[white] h-[4em] border-2 border-b-solid w-screen overflow-hidden fixed top-0">
+    return <div className="z-30 opacity-100 bg-[white] h-[4em] border-2 border-b-solid w-screen overflow-hidden fixed top-0">
             <div className="flex ml-2 mt-1 items-center w-[100%] border-solid border-violet-100 justify-between">
                 <div className="flex justify-around items-center">
                     <BrainIcon/>
