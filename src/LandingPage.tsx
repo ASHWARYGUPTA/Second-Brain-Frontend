@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { NavBar } from "./components/ui/NavBar"
 import { useNavigate } from "react-router-dom"
 
-export const LandingPage= ()=>{
+const LandingPage= ()=>{
     const navigate = useNavigate();
     useEffect(()=>{
         document.title = "Landing Page"
@@ -16,3 +16,5 @@ export const LandingPage= ()=>{
             
     </div>
 }
+
+export default LandingPage;

@@ -8,7 +8,7 @@ import { isLoggedIn } from "./components/ui/States/RecoilAtoms";
 import { Loader } from "./components/ui/Loader";
 import { useNavigate } from "react-router-dom";
 
-export const SignUpPage = ()=>{
+const SignUpPage = ()=>{
 
     const navigate = useNavigate();
 
@@ -38,3 +38,5 @@ export const SignUpPage = ()=>{
 
     </>
 }
+
+export default SignUpPage;

@@ -9,7 +9,7 @@ import { Tags } from "./Tags";
 
 const DefaultStyles:String = " flex-wrap rounded-md border-solid border my-4 mx-[30px] px-[15px] py-[15px] h-[420px]  w-[400px] justify-center item-center shadow-md";
 
-export const ContentPost = (props:ContentPostType)=>{
+const ContentPost = (props:ContentPostType)=>{
     return (
         <div className={`${DefaultStyles} ${ContentPostVarientUse[props.varient?props.varient:"normal"]}`}>
             <div className="pb-3">
@@ -43,3 +43,5 @@ export const ContentPost = (props:ContentPostType)=>{
     )
     
 }
+
+export default ContentPost;

@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { ContentViewer } from "./components/ui/ContentViewer"
+import  ContentViewer from "./components/ui/ContentViewer"
 import { AddIcon } from "./components/ui/Icons/AddIcon"
 import { ShareIcon } from "./components/ui/Icons/ShareIcon"
 import { NavBar } from "./components/ui/NavBar"
@@ -10,12 +10,12 @@ import { useRecoilValue } from "recoil"
 import { viewInputBox } from "./components/ui/States/RecoilAtoms"
 import { useSetRecoilState } from "recoil"
 
-export const ContentPage = ()=>{
+const ContentPage = ()=>{
     const viewInputBoxVal = useRecoilValue(viewInputBox);
     const setViewInputBoxVal = useSetRecoilState(viewInputBox);
-    const navigate = useNavigate();
     useEffect(()=>{
         document.title = "Dashboard"
+        
     },[])
     return <>
         <div className='bg-[#F9FBFC]'>
@@ -44,3 +44,5 @@ export const ContentPage = ()=>{
       </div>
     </>
 }
+
+export default ContentPage;

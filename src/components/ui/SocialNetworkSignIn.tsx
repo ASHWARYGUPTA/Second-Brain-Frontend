@@ -3,10 +3,13 @@ import Button from './Button';
 import { application } from 'express';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
+import { isLoggedIn } from './States/RecoilAtoms';
 
 
 
 export const SocialNetworkSignIn = ()=>{
+    const setIsLoggedInVal = useSetRecoilState(isLoggedIn);
     const navigate = useNavigate();
     
     useGoogleOneTapLogin({
@@ -42,6 +45,7 @@ export const SocialNetworkSignIn = ()=>{
                 }).then(res=>res.json()).then(res=>res).catch(err=>console.log(err));
                 console.log(trySignIn);
                 if(trySignIn?.value===true){
+                    setIsLoggedInVal(true);
                     navigate("/dashboard")
                 }
             },
@@ -97,6 +101,7 @@ export const SocialNetworkSignIn = ()=>{
                 }).then(res=>res.json()).then(res=>res).catch(err=>console.log(err));
                 console.log(trySignIn);
                 if(trySignIn?.value===true){
+                    setIsLoggedInVal(true);
                     navigate("/dashboard")
                 }
             

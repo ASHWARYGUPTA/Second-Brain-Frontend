@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom"
 
 
 
-export const SignInPage = ()=>{
+const SignInPage = ()=>{
     const navigate = useNavigate();
     const [isLoggedInVal,setIsLoggedInVal] = useRecoilStateLoadable(isLoggedIn);
     const isCorrectValue = useRecoilValue(isCorrect);
@@ -71,4 +71,6 @@ export const SignInPage = ()=>{
     
     
 }
+
+export default SignInPage;
 

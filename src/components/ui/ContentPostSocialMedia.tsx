@@ -11,7 +11,7 @@ import { Loader } from "./Loader";
 
 const DefaultStyles:String = "flex-wrap my-4 h-fit rounded-md border-solid border mx-[30px] px-[15px] py-[15px] w-[400px] justify-center item-center shadow-md";
 
-export const ContentPostSocialMedia = (props:ContentPostType)=>{
+const ContentPostSocialMedia = (props:ContentPostType)=>{
     
         return (
             <div className={`${DefaultStyles} ${ContentPostVarientUse[props.varient?props.varient:"normal"]}`}>
@@ -73,3 +73,5 @@ export const ContentPostSocialMedia = (props:ContentPostType)=>{
             </div>
     )
 }
+
+export default ContentPostSocialMedia;

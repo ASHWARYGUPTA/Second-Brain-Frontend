@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form"
-import { ContentPost } from "./ContentPost"
-import { ContentPostSocialMedia } from "./ContentPostSocialMedia";
+import ContentPost  from "./ContentPost"
+import ContentPostSocialMedia  from "./ContentPostSocialMedia";
 import { InputPostBoxForm } from "./InputPostBoxForm";
 import { useSetRecoilState } from "recoil";
 import { viewInputBox } from "./States/RecoilAtoms";
