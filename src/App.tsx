@@ -8,8 +8,8 @@ import { Router,Routes,Route,BrowserRouter } from 'react-router-dom'
 import { Loader } from './components/ui/Loader';
 
 
-function App() {
 
+function App() {
   return (
     <>
       <BrowserRouter>
@@ -39,6 +39,7 @@ function App() {
             </React.Suspense>
             }/>
           <Route path='/' element = {
+            
             // @ts-ignore
             <React.Suspense fallback={<Loader height="50" width="50" radius="5" colors={["#5046E2","#5046E2","#5046E2","#5046E2","#5046E2"]}/>}>
                 <ContentPage/>

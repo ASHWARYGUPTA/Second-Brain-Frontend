@@ -162,10 +162,15 @@ export const InputPostBoxForm = ()=>{
                     type="button"
                     >Add</button>
                 </div>
+                {/* <div className=""> */}
+                        <div className="col-span-4 mt-3 w-[full] h-[100px] border-2 rounded-md">
 
-                <div>
-
+                        </div>
+                {/* </div> */}
+                <div className="col-span-4 mt-3 flex justify-center items-center">
+                        <Button text="Add Post "/>
                 </div>
+                
             </div>
             
             

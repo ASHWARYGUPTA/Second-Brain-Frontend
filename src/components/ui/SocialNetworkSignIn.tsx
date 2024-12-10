@@ -14,7 +14,7 @@ export const SocialNetworkSignIn = ()=>{
     
     useGoogleOneTapLogin({
             onSuccess:async credentialResponse => {
-                console.log(credentialResponse.credential);
+                // console.log(credentialResponse.credential);
                 const data = await fetch("http://localhost:3000/api/v1/decodeJwt",{
                     method:"GET",
                     headers:{
@@ -26,7 +26,7 @@ export const SocialNetworkSignIn = ()=>{
                 }).then((res)=>{
                     return res.json()
                 }).then((res)=>{
-                    console.log(res);
+                    // console.log(res);
                     return res;
                 })
                 
@@ -43,7 +43,7 @@ export const SocialNetworkSignIn = ()=>{
                         username:data.decoded.name
                     })
                 }).then(res=>res.json()).then(res=>res).catch(err=>console.log(err));
-                console.log(trySignIn);
+                // console.log(trySignIn);
                 if(trySignIn?.value===true){
                     setIsLoggedInVal(true);
                     navigate("/dashboard")
@@ -69,7 +69,7 @@ export const SocialNetworkSignIn = ()=>{
                 <GoogleLogin
                 onSuccess={
                     async (credentialResponse:CredentialResponse)=>{
-                    console.log(credentialResponse.credential);
+                    // console.log(credentialResponse.credential);
 
                     const data = await fetch("http://localhost:3000/api/v1/decodeJwt",{
                     method:"GET",
@@ -99,7 +99,7 @@ export const SocialNetworkSignIn = ()=>{
                         username:data.decoded.name,
                     })
                 }).then(res=>res.json()).then(res=>res).catch(err=>console.log(err));
-                console.log(trySignIn);
+                // console.log(trySignIn);
                 if(trySignIn?.value===true){
                     setIsLoggedInVal(true);
                     navigate("/dashboard")

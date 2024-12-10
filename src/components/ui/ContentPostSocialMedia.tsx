@@ -52,10 +52,9 @@ const ContentPostSocialMedia = (props:ContentPostType)=>{
 
                 {/* Tags */}
                 <div className="my-1 flex flex-wrap">
-                    {props.tags?.map(x=><Tags text={x.toLowerCase()}/>)}
-                    {props.tags == null && 
-                        <Tags text={"Enter tags"}/>
-                    }
+                    {props.tags?<>{
+                        props.tags.map((x,i)=><Tags key={i} text={x}/>)
+                    }</>:<Tags text={"Enter Text"}/>}
 
                     {/* <Tags text={"productivity"}/>
                     <Tags text={"ideas"}/>
