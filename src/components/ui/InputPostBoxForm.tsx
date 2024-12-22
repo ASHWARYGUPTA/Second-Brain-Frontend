@@ -49,7 +49,9 @@ export const InputPostBoxForm = ()=>{
             body:JSON.stringify({
                 typeLink:data.typeLink?data.typeLink:"undefined",
                 text:data.text?data.text:"undefined",
-                link: data.link?data.link:"undefined",
+                link: data.link?
+                data.typeLink === "youtube"?convertToEmbedUrl(data.link):
+                data.link:"undefined",
                 title: data.title?data.title:"undefined",
                 heading:data.heading?data.heading:"undefined",
                 textAbout:data.textAbout?data.textAbout:"undefined",
@@ -199,6 +201,7 @@ export const InputPostBoxForm = ()=>{
                 placeholder="https://x.com/maybe_riya/status/1864673389497209264"
                 type="url"
                 {...register("link")}
+                
                 onChange={e=>setSamplePost(val=>({...val,link:e.target.value}))}
                 />
             </div>
