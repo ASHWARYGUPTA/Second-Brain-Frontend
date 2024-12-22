@@ -1,23 +1,12 @@
 import { useForm, useWatch } from "react-hook-form"
 import { ContentPostType } from "./States/utils";
 import Button from "./Button";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { samplePost, samplePostTags, viewInputBox } from "./States/RecoilAtoms";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { postsTrigger, samplePost, samplePostTags, viewInputBox } from "./States/RecoilAtoms";
 import { useState } from "react";
 import { Tags } from "./Tags";
 
 
-// interface ContentPostType{
-//     typeLink?:typeLinkType;
-//     text?:string;
-//     link?:string;
-//     title?:string;
-//     heading?:string;
-//     textAbout?:string;
-//     tags?:Array<String>;
-//     varient?:ContentPostVarient;
-//     CreatedAt?:Date;
-// }
 
 export const InputPostBoxForm = ()=>{
     const setSamplePost = useSetRecoilState(samplePost);
@@ -25,6 +14,7 @@ export const InputPostBoxForm = ()=>{
     const samplePostVal = useRecoilValue(samplePost);
     const [tagString,setTagString] = useState("");
     const samplePostTagsVal = useRecoilValue(samplePostTags);
+    const setPostsArray = useSetRecoilState(postsTrigger);
     
     function convertToEmbedUrl(url: string): string {
         const regex = /https:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/;
@@ -62,6 +52,7 @@ export const InputPostBoxForm = ()=>{
         console.log(res);
         if(res.value === true){
             setviewInputBox(false);
+            setPostsArray(e=>e+1);
         }
         
     }

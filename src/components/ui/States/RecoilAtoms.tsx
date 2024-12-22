@@ -32,20 +32,21 @@ export const viewInputBox = atom({
     key:"viewInputBox",
     default:false
 })
-
-export const postsArray = atom({
-    key:"postsArray",
-    default: selector({
-        key:"postsArraySelector",
-        get:async ({get})=>{
-            const data = await fetch("https://second-brain-backend-abk0.onrender.com/api/v1/content",{
-                method:"GET",
-                credentials:"include"
-            }).then(res=>res.json()).then(res=>res)
-            return data.posts;
-        }
-    })
+export const postsTrigger = atom({
+    key:"postsTrigger",
+    default:0
 })
+export const postsArray = selector({
+    key:"postsArray",
+    get:async ({get})=>{
+        get(postsTrigger);
+        const data = await fetch("https://second-brain-backend-abk0.onrender.com/api/v1/content",{
+            method:"GET",
+            credentials:"include"
+        }).then(res=>res.json()).then(res=>res)
+        return data.posts;
+    }
+    })
 
 export const posts = atomFamily({
     key:"posts",
