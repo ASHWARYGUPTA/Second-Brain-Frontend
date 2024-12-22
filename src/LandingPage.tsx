@@ -19,7 +19,7 @@ const LandingPage= ()=>{
         <>{isLoggedInVal.state === "hasValue" && isLoggedInVal.contents === true?
         <div>
             <div>
-                {isLoggedInVal.contents === true?
+                {isLoggedInVal.contents === false?
                 <NavBar 
                     textButton1="SignUp" 
                     textButton2="SignIn" 
