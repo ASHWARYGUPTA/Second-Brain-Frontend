@@ -21,7 +21,9 @@ export const isLoggedIn = atom({
             return await fetch("https://second-brain-backend-abk0.onrender.com/api/v1/signin",{
                 method:"GET",
                 credentials:"include"
-            }).then((res)=>res.json()).then((res)=>res.value);
+            }).then((res)=>res.json()).then((res)=>{
+                console.log(res.value)
+                return res.value});
         }
     })
 })

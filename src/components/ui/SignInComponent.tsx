@@ -38,7 +38,7 @@ export const SignInComponent = ()=>{
             })
         }).then(res=>res.json()).then(res=>res).catch(err=>console.log(err));
 
-        if(data.value){
+        if(data.value===true){
             console.log("verified")
             setIsCorrect(true);
             navigate("/dashboard")

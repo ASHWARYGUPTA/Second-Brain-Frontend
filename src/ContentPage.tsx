@@ -35,7 +35,7 @@ const ContentPage = ()=>{
           </div>
           
         </>:<>
-        {isLoggedInVal.contents === true?<>
+        {isLoggedInVal.state === "hasValue" && isLoggedInVal.contents === true?<>
           <div className='absolute w-[100%]'>
                   <NavBar 
                   textButton1="Add Content" 

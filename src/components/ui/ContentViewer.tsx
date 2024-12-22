@@ -12,7 +12,6 @@ import { useEffect, useState } from "react"
 const ContentViewer = ()=>{
     const postsArrayVal = useRecoilValueLoadable<Array<ContentPostType>>(postsArray);
     console.log(postsArrayVal.contents);
-    const [tagsArr,setTagsArr] = useState([]);
 
     return (
         <div>
