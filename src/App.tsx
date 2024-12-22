@@ -42,7 +42,7 @@ function App() {
             
             // @ts-ignore
             <React.Suspense fallback={<Loader height="50" width="50" radius="5" colors={["#5046E2","#5046E2","#5046E2","#5046E2","#5046E2"]}/>}>
-                <ContentPage/>
+                <LandingPage/>
             </React.Suspense>
             }/>
           <Route path='/*' element = {<div className='flex justify-center items-center'>

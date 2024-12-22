@@ -38,7 +38,7 @@ export const SideBar = ()=>{
             <div className="">
                     <GenericIcon icon={
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                         viewBox="0 0 56.7 56.7" enable-background="0 0 56.7 56.7"
+                         viewBox="0 0 56.7 56.7" enableBackground="0 0 56.7 56.7"
                          width="30" height="100"
                          strokeWidth="0.001" stroke="currentColor" className="size-7 hover:stroke-1 mt-7"
                          >

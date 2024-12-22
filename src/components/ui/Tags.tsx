@@ -1,11 +1,14 @@
-interface TagsType {
-    text?:String
-}
+import { TagsType } from "./States/utils"
+
 
 export const Tags = (props:TagsType)=>{
-    return <div className=" text-sm flex justify-center border-solid border-1 bg-[#ECF3FC]  rounded-full w-max mr-[2px] my-[2px]">
+    // console.log(props.text);
+    // console.log(props.title);
+    return <div className="h-fit w-fit text-sm flex justify-center border-solid border-1 bg-[#ECF3FC]  rounded-full mr-[2px] my-[2px]">
         <div className="px-[8px] py-[2px] text-[#645BCA]">
-            #{props.text?props.text:"Enter Text"}
+            {props.OnClick&&<button type="button" onClick={props.OnClick}>X</button>}
+            #{props.text?props.text:props.title?props.title:"Enter Text"}
+            
         </div>
     </div>
 }

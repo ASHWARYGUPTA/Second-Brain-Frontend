@@ -2,30 +2,80 @@ import { useRecoilStateLoadable, useRecoilValueLoadable } from "recoil"
 import ContentPost  from "./ContentPost"
 import ContentPostSocialMedia  from "./ContentPostSocialMedia"
 import { InputPostBox } from "./InputPostBox"
-import { isLoggedIn } from "./States/RecoilAtoms"
+import { isLoggedIn, postsArray } from "./States/RecoilAtoms"
 import { Loader } from "./Loader"
 import { Link } from "react-router-dom"
 import { Fragment } from "react/jsx-runtime"
+import { ContentPostType } from "./States/utils"
+import { useEffect, useState } from "react"
 
 const ContentViewer = ()=>{
-    const [isLoggedInLoadable,setIsLoggeedIn] = useRecoilStateLoadable(isLoggedIn);
+    const postsArrayVal = useRecoilValueLoadable<Array<ContentPostType>>(postsArray);
+    console.log(postsArrayVal.contents);
+    const [tagsArr,setTagsArr] = useState([]);
+
     return (
         <div>
-            {
-            isLoggedInLoadable.state == "loading"&&
-            <div className="h-screen w-screen flex justify-center items-center">
-                {/* @ts-ignore */}
-                <Loader height="50" width="50" radius="5" colors={["#5046E2","#5046E2","#5046E2","#5046E2","#5046E2"]}/>
-            </div>
-            }
-        
-            {isLoggedInLoadable.state == "hasValue" && isLoggedInLoadable.contents === true&&<div>
-
+            <div>
                 <div className="my-4 mx-6 ml-8 font-bold text-xl">
                     All Notes
                 </div>
                 <div className="flex flex-wrap">
-                    <div className=""><ContentPost varient = "important"/></div>
+                    {
+                    postsArrayVal.state === "hasValue"?
+                    <>
+                    {/* {console.log(postsArrayVal.contents)} */}
+                    {postsArrayVal.contents.map(({_id,title,CreatedAt,heading,link,tags,text,textAbout,typeLink,varient}) => (
+                <ContentPostSocialMedia 
+                key={_id}
+                title = {title}
+                CreatedAt={CreatedAt}
+                _id={_id}
+                heading={heading}
+                link={link}
+                tags={tags}
+                textAbout={textAbout}
+                typeLink={typeLink}
+                varient={varient}
+                />
+        ))
+        }
+        
+                    {/* {postsArrayVal.contents.map((value,index)=>(
+                            <div key={index}>
+                                <ContentPostSocialMedia 
+                                
+                                id={value.id}
+                                CreatedAt={value.CreatedAt}
+                                heading={value.heading}
+                                link={value.link}
+                                tags={value.tags}
+                                textAbout={value.textAbout}
+                                title={value.title}
+                                typeLink={value.typeLink}
+                                varient={value.varient}
+                                />
+                            </div>
+                        )
+                        )
+                        } */}
+                    </>
+                    :
+                    <><Loader/></>
+
+                    }
+                </div>
+            </div>
+            
+        </div>
+        
+        
+    )
+}
+
+export default ContentViewer;
+
+{/* <div className=""><ContentPost varient = "important"/></div>
                     <div className=""><ContentPostSocialMedia typeLink="youtube"/></div>
                     <div className=""><ContentPost/></div>
                     <div className=""><ContentPost/></div>
@@ -48,25 +98,4 @@ const ContentViewer = ()=>{
                     typeLink="youtube"
                     tags={["Productivity","Link"]}
                     varient="important"
-                    /></div>
-                </div>
-            </div>
-            }
-
-            {isLoggedInLoadable.contents === false&&
-            <>
-                <div className=" h-screen w-screen flex justify-center items-center">
-                    <div className="mr-[200px] h-[3rem] w-[480px]">
-                        An Error Occured/You are Not Signed In 
-                        <Link to="/SignIn" className="text-purple-600">&nbsp;Sign In&nbsp;</Link> to Continue
-                        OR <Link to= "/Signup" className="text-purple-600">&nbsp;SignUp&nbsp;</Link>
-                    </div>
-                </div>
-            </>}
-        </div>
-        
-        
-    )
-}
-
-export default ContentViewer;
+                    /></div> */}

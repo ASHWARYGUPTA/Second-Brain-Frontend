@@ -32,10 +32,17 @@ export type ContentPostVarient = "normal"|"important";
 
 export type typeLinkType = "youtube"|"twitter"|"instagram"|"normalPost"|"link";
 
+export interface TagsType {
+    _id?:string;
+    text?:string;
+    OnClick?:()=>void;
+    title?:string;
+    _v?:number;
+}
 
 
 export interface ContentPostType{
-    id?:string;
+    _id?:string;
     typeLink?:typeLinkType;
     text?:string;
     link?:string;

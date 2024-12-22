@@ -2,11 +2,13 @@ import { useForm } from "react-hook-form"
 import ContentPost  from "./ContentPost"
 import ContentPostSocialMedia  from "./ContentPostSocialMedia";
 import { InputPostBoxForm } from "./InputPostBoxForm";
-import { useSetRecoilState } from "recoil";
-import { viewInputBox } from "./States/RecoilAtoms";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { samplePost, viewInputBox } from "./States/RecoilAtoms";
 
 export const InputPostBox = ()=>{
     const setViewInputBoxVal = useSetRecoilState(viewInputBox);
+    const [samplePostState,setSamplePostState] = useRecoilState(samplePost);
+    
     const {
         register,
         getValues,
@@ -32,7 +34,16 @@ export const InputPostBox = ()=>{
                     </div>
                 </div>
                 <div className="h-[90%] flex items-center">
-                    <ContentPostSocialMedia/>
+                    <ContentPostSocialMedia 
+                    heading={samplePostState.heading} 
+                    link={samplePostState.link}
+                    text={samplePostState.text}
+                    tags={samplePostState.tags}
+                    title={samplePostState.title}
+                    textAbout={samplePostState.textAbout}
+                    typeLink={samplePostState.typeLink}
+                    varient={samplePostState.varient}
+                    />
                 </div>
             </div>
         </div>

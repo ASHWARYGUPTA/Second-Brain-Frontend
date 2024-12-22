@@ -1,5 +1,5 @@
 import { atom, atomFamily, selector, selectorFamily } from "recoil";
-import { ContentPostType } from "./utils";
+import { ContentPostType, ContentPostVarientUse } from "./utils";
 
 
 
@@ -36,11 +36,11 @@ export const postsArray = atom({
     default: selector({
         key:"postsArraySelector",
         get:async ({get})=>{
-            const data = await fetch("http://localhost:3000/content",{
+            const data = await fetch("http://localhost:3000/api/v1/content",{
                 method:"GET",
                 credentials:"include"
             }).then(res=>res.json()).then(res=>res)
-            return data
+            return data.posts;
         }
     })
 })
@@ -52,9 +52,30 @@ export const posts = atomFamily({
         get: id=> async ({get})=>{
             const posts = await get(postsArray);
 
-            posts.filter((x:ContentPostType)=>x.id === id)
+            posts.filter((x:ContentPostType)=>x._id === id)
 
         }
     })
 })
 
+export const samplePost = atom<ContentPostType>({
+    key:"samplePost",
+    default:{
+        typeLink:"normalPost",
+        text:"",
+        link:"",
+        title:"",
+        heading:"",
+        textAbout:"",
+        varient:"normal",
+        tags:[]
+    }
+})
+
+export const samplePostTags = selector({
+    key:"samplePostTags",
+    get:({get})=>{
+        const data = get(samplePost);
+        return data.tags;
+    }
+})
