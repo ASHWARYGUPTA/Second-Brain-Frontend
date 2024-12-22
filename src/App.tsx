@@ -10,6 +10,7 @@ import { Loader } from './components/ui/Loader';
 
 
 function App() {
+  console.log()
   return (
     <>
       <BrowserRouter>
