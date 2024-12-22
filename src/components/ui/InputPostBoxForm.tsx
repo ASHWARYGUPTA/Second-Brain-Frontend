@@ -94,6 +94,7 @@ export const InputPostBoxForm = ()=>{
                 <div className="col-span-3">
                     <input className={DefaultInputStyle}
                     placeholder="How to Build a Second Brain"
+                    {...register("heading")}
                     onChange={e=>setSamplePost(val=>({...val ,heading:e.target.value}))}
                     />
                 </div>
