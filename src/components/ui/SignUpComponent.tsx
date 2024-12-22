@@ -6,11 +6,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { MutableRefObject, useEffect, useRef } from "react";
 import { useRecoilState } from "recoil";
 import { isCorrect } from "./States/RecoilAtoms";
+import { useNavigate } from "react-router-dom";
 
 //React.ChangeEvent<HTMLInputElement>
 
 export const SignUpComponent = ()=>{
     const [isCorrectValue,setIsCorrect] = useRecoilState(isCorrect);
+    const navigate = useNavigate();
 
     const{
     register,
@@ -99,6 +101,9 @@ export const SignUpComponent = ()=>{
                 error:err
             }))
             console.log(res);
+            if(res.value){
+                navigate("/signin")
+            }
         },2000);
         reset();
     }
