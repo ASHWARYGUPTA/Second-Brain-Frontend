@@ -51,6 +51,16 @@ export const InputPostBoxForm = ()=>{
         }).then(res=>res.json())
         console.log(res);
         if(res.value === true){
+            setSamplePost({
+                heading:"",
+                link:"",
+                tags:[],
+                text:"",
+                title:"",
+                textAbout:"",
+                typeLink:"normalPost",
+                varient:"normal",
+            })
             setviewInputBox(false);
             setPostsArray(e=>e+1);
         }
