@@ -26,6 +26,15 @@ export const InputPostBoxForm = ()=>{
     const [tagString,setTagString] = useState("");
     const samplePostTagsVal = useRecoilValue(samplePostTags);
     
+    function convertToEmbedUrl(url: string): string {
+        const regex = /https:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/;
+        const match = url.match(regex);
+        if (match && match[1]) {
+          return `https://www.youtube.com/embed/${match[1]}`;
+        }
+        return "Invalid URL"
+      }
+
     const onSubmit = async (data:ContentPostType)=>{
      
         setSamplePost(val=>({...val,tags:samplePostTagsVal}));
@@ -175,7 +184,7 @@ export const InputPostBoxForm = ()=>{
                     placeholder="https://www.youtube.com/embed/UrW19xffEUk?si=JPAu5OgGTlB1eeua"
                     type="url"
                     {...register("link")}
-                    onChange={e=>setSamplePost(val=>({...val,link:e.target.value}))}
+                    onChange={e=>setSamplePost(val=>({...val,link:convertToEmbedUrl(e.target.value)}))}
                     />
                 </div>
 
