@@ -17,10 +17,10 @@ const LandingPage= ()=>{
         <div className="flex justify-center items-center h-screen w-screen">
             <div>
                 <div>
-                    <Link to = "/signin"><text className="text-purple-600">Sign In</text></Link>&nbsp;to continue
+                    <Link to = "/signin"> <span className="text-purple-600">Sign In</span></Link>&nbsp;to continue
                 </div>
                 <div>
-                    Or Try <Link to = "/signin"><text className="text-purple-600">Signing Up</text></Link>&nbsp;to continue
+                    Or Try <Link to = "/signin"><span className="text-purple-600">Signing Up</span></Link>&nbsp;to continue
                 </div>
             </div>
         </div>

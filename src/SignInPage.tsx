@@ -36,7 +36,7 @@ const SignInPage = ()=>{
                     User Already Signed In please <span ><button className="text-purple-600 mx-1" onClick={async()=>{
                         setIsLoggedInVal(
                             async ()=>{
-                            const data = await fetch("http://localhost:3000/api/v1/signin/logout",{
+                            const data = await fetch("https://second-brain-backend-abk0.onrender.com/api/v1/signin/logout",{
                             method:"GET",
                             credentials:"include"
                         }).then(res=>res.json()).then(res=>!res.value);

@@ -10,7 +10,7 @@ const OneTapLogin = ()=>{
     useGoogleOneTapLogin({
             onSuccess:async credentialResponse => {
                 // console.log(credentialResponse.credential);
-                const data = await fetch("http://localhost:3000/api/v1/decodeJwt",{
+                const data = await fetch("https://second-brain-backend-abk0.onrender.com/api/v1/decodeJwt",{
                     method:"GET",
                     headers:{
                         'Accept': 'application/json',
@@ -25,7 +25,7 @@ const OneTapLogin = ()=>{
                     return res;
                 })
                 
-                const trySignIn = await fetch("http://localhost:3000/api/v1/googleAuth",{
+                const trySignIn = await fetch("https://second-brain-backend-abk0.onrender.com/api/v1/googleAuth",{
                     method:"POST",
                     headers:{
                         'Accept': 'application/json',

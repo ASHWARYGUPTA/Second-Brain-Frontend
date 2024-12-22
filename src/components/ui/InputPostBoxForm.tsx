@@ -31,7 +31,7 @@ export const InputPostBoxForm = ()=>{
         setSamplePost(val=>({...val,tags:samplePostTagsVal}));
         console.log(samplePostTagsVal);
         console.log(samplePostVal);
-        const res = await fetch("http://localhost:3000/api/v1/content",{
+        const res = await fetch("https://second-brain-backend-abk0.onrender.com/api/v1/content",{
             method:"POST",
             credentials:"include",
             headers: {

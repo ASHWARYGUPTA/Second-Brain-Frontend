@@ -32,7 +32,7 @@ export const SignUpComponent = ()=>{
         else{
             await setTimeout(async ()=>{
                 // console.log("email req");
-                const res = await fetch("http://localhost:3000/api/v1/signin/findEmail",{
+                const res = await fetch("https://second-brain-backend-abk0.onrender.com/api/v1/signin/findEmail",{
                     method:"GET",
                     headers:{
                         email:e.target.value
@@ -52,7 +52,7 @@ export const SignUpComponent = ()=>{
 
     const validateUsername = async (e:React.ChangeEvent<HTMLInputElement>)=>{
         await setTimeout(async ()=>{
-            const data = await fetch("http://localhost:3000/api/v1/signin/findUser",{
+            const data = await fetch("https://second-brain-backend-abk0.onrender.com/api/v1/signin/findUser",{
                 method:"GET",
                 headers:{
                     "user":e.target.value
@@ -87,7 +87,7 @@ export const SignUpComponent = ()=>{
 
     const handleFormSubmit = async (data:unknown)=>{
         setTimeout(async ()=>{
-            const res = await fetch("http://localhost:3000/api/v1/signup",{
+            const res = await fetch("https://second-brain-backend-abk0.onrender.com/api/v1/signup",{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",
