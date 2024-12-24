@@ -194,7 +194,7 @@ export const InputPostBoxForm = ()=>{
 
             </>
             :
-            watch("typeLink") == "twitter" ?<>
+            watch("typeLink") === "twitter" ?<>
             <div className="">
             <label>Enter Twitter Post Url: </label>
             </div>

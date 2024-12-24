@@ -38,7 +38,10 @@ const ContentPostSocialMedia = (props:ContentPostType)=>{
                 </div> } */}
                 {props.typeLink!= "normalPost" ? <div className="max-h-[400px]  h-fit py-4 flex-wrap overflow-y-auto overflow-x-hidden">
                     {props.typeLink == "instagram" && <InstagramEmbed url={props.link?props.link:"https://www.instagram.com/shitindianssay/reel/DDMnUaANvxs/"} captioned/>}
-                    {props.typeLink == "twitter" && <TwitterEmbed url={props.link?props.link:"https://x.com/maybe_riya/status/1864673389497209264"} placeholderSpinner/>}
+                    {props.typeLink == "twitter" &&<>{props.link?<iframe width={370} height={280}
+ src={`https://twitframe.com/show?url=${encodeURIComponent(props.link).replace("x.com","twitter.com")}`}></iframe>:<iframe width={370} height={280}
+ src="https://twitframe.com/show?url=https%3A%2F%2Ftwitter.com%2Fjack%2Fstatus%2F20"></iframe>}
+                    </>}
                     {props.typeLink == "youtube" && <iframe width={"370"} height="200" src={props.link?props.link:"https://www.youtube.com/embed/UrW19xffEUk?si=JPAu5OgGTlB1eeua"} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" 
                     allowFullScreen = {true}
                     ></iframe>}
