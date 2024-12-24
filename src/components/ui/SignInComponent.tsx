@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form"
 import Button from "./Button"
 import { InputComponent } from "./InputComponent"
 import { useRecoilState, useRecoilStateLoadable, useRecoilValueLoadable, useSetRecoilState } from "recoil";
-import { isCorrect, isLoggedIn } from "./States/RecoilAtoms";
+import { isCorrect, isLoggedIn, triggerLoggedInCheck } from "./States/RecoilAtoms";
 import { useEffect } from "react";
 import { Loader } from "./Loader";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +17,7 @@ interface SignInType{
 export const SignInComponent = ()=>{
     const setIsCorrect = useSetRecoilState(isCorrect);
     const navigate = useNavigate();
+    const setTrigger = useSetRecoilState(triggerLoggedInCheck);
     
     const {
         register,
@@ -41,6 +42,7 @@ export const SignInComponent = ()=>{
         if(data.value===true){
             console.log("verified")
             setIsCorrect(true);
+            setTrigger(e=>e+1);
             navigate("/dashboard")
 
         }

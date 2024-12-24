@@ -29,6 +29,7 @@ export const LoggedInCheck = selector({
             return res.value});
     }
 })
+
 export const isLoggedIn = atom({
     key:"isLoggedIn",
     default:selector({
