@@ -33,7 +33,7 @@ const LandingPage= ()=>{
                     />}
             </div>
             <div className="flex justify-center items-center h-screen w-screen">
-                {isLoggedInVal.contents === false?
+                {isLoggedInVal.contents === true?
                 <div>
                     <div>
                         <Link to = "/signin"> <span className="text-purple-600">Sign In</span></Link>&nbsp;to continue
