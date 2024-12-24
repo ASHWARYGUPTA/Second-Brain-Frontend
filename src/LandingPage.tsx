@@ -2,15 +2,18 @@ import { useEffect } from "react"
 import { NavBar } from "./components/ui/NavBar"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
-import { useRecoilValue, useRecoilValueLoadable } from "recoil";
-import { isLoggedIn } from "./components/ui/States/RecoilAtoms";
+import { useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from "recoil";
+import { isLoggedIn, LoggedInCheck, triggerLoggedInCheck } from "./components/ui/States/RecoilAtoms";
 import { Loader } from "./components/ui/Loader";
 
 const LandingPage= ()=>{
     const navigate = useNavigate();
-    const isLoggedInVal = useRecoilValueLoadable(isLoggedIn);
+    const isLoggedInVal = useRecoilValueLoadable(LoggedInCheck);
+    const setTrigger = useSetRecoilState(triggerLoggedInCheck);
+
     useEffect(()=>{
         document.title = "Landing Page"
+        setTrigger(e=>e+1);
     },[])
     return <div>
         {isLoggedInVal.state === "loading" ? <Loader/>:<>

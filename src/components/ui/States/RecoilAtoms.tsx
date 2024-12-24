@@ -12,7 +12,23 @@ export const isCorrect = atom({
     key:"isCorrect",
     default:true
 })
+export const triggerLoggedInCheck = atom({
+    key:"triggerLoggedInCheck",
+    default:0
+})
 
+export const LoggedInCheck = selector({
+    key:"LoggedInCheck",
+    get:async ({get})=>{
+        get(triggerLoggedInCheck);
+        return await fetch("https://second-brain-backend-abk0.onrender.com/api/v1/signin",{
+            method:"GET",
+            credentials:"include"
+        }).then((res)=>res.json()).then((res)=>{
+            console.log(res.value)
+            return res.value});
+    }
+})
 export const isLoggedIn = atom({
     key:"isLoggedIn",
     default:selector({
