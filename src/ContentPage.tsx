@@ -8,7 +8,7 @@ import { SideBar } from "./components/ui/SideBar"
 import { useNavigate } from "react-router-dom"
 import { InputPostBox } from "./components/ui/InputPostBox"
 import { useRecoilValue, useRecoilValueLoadable } from "recoil"
-import { isLoggedIn, viewInputBox } from "./components/ui/States/RecoilAtoms"
+import { isLoggedIn, LoggedInCheck, viewInputBox } from "./components/ui/States/RecoilAtoms"
 import { useSetRecoilState } from "recoil"
 import { Loader } from "./components/ui/Loader"
 import { Link } from "react-router-dom"
@@ -16,7 +16,7 @@ import { Link } from "react-router-dom"
 const ContentPage = ()=>{
     const viewInputBoxVal = useRecoilValue(viewInputBox);
     const setViewInputBoxVal = useSetRecoilState(viewInputBox);
-    const isLoggedInVal = useRecoilValueLoadable(isLoggedIn);
+    const isLoggedInVal = useRecoilValueLoadable(LoggedInCheck);
     const navigate = useNavigate();
     
     

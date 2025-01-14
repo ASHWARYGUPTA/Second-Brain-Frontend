@@ -42,9 +42,8 @@ export const SignInComponent = ()=>{
         if(data.value===true){
             console.log("verified")
             setIsCorrect(true);
-            setTrigger(e=>e+1);
-            navigate("/dashboard")
-
+            setTrigger(e=>e-1);
+            navigate("/dashboard");
         }
         else{
             setIsCorrect(false);
